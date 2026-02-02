@@ -1,0 +1,42 @@
+{
+  "Title": "Arro Simple Form",
+  "Description": "Arro Simple Form is a powerful form builder for Umbraco CMS that enables users to create dynamic, customizable forms without writing any code. Seamlessly integrate forms into your Umbraco websites with automated data collection and email notifications.",
+  "Category": "Editor Tools",
+  "AlternateCategory": "Developer Tools",
+  "LicenseTypes": [
+    "Free"
+  ],
+  "PackageType": "Package",
+  "Tags": [
+    "forms",
+    "form builder",
+    "no-code",
+    "email notifications",
+    "data collection",
+    "file upload",
+    "dynamic forms"
+  ],
+  "AuthorDetails": {
+    "Name": "Arroact Technologies Pvt. Ltd.",
+    "Description": "Arroact Technologies specializes in developing powerful tools and extensions for Umbraco CMS, helping businesses build better web experiences.",
+    "Url": "https://www.arroact.com",
+    "ImageUrl": "https://cms.arroact.com/media/jzcd4vb0/arroactlogo.png"
+  },
+  "DocumentationUrl": "https://www.arroact.com/umbraco-form/",
+  "IssueTrackerUrl": "https://github.com/KeyurArroact/ArroSimpleForm/issues",
+  "Screenshots": [
+    {
+      "ImageUrl": "https://www.arroact.com/media/euwnpkep/image.png",
+      "Caption": "Intuitive form builder interface"
+    },
+    {
+      "ImageUrl": "https://www.arroact.com/media/2nzbo5hf/image.png",
+      "Caption": "View and manage form submissions"
+    },
+    {
+      "ImageUrl": "https://www.arroact.com/media/dsvgym2v/image.png",
+      "Caption": "Configure email notifications and actions"
+    }
+  ],
+  "VersionDependencyMode": "Default"
+}
