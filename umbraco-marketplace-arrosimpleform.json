@@ -26,9 +26,10 @@
   "IssueTrackerUrl": "https://github.com/KeyurArroact/ArroSimpleForm/issues",
   "Screenshots": [
   {
-      "VideoUrl": "https://www.youtube.com/embed/m4Hi92XqjRo?autoplay=0&modestbranding=1",
-      "Caption": "Getting Started with ArroSimpleForm"
-    },
+  "ImageUrl": "https://www.arroact.com/media/yribkzwv/intro.png",
+  "Caption": "Getting started video",
+  "VideoUrl": "https://www.youtube.com/watch?v=m4Hi92XqjRo"
+},
     {
       "ImageUrl": "https://www.arroact.com/media/euwnpkep/image.png",
       "Caption": "Intuitive form builder interface"
