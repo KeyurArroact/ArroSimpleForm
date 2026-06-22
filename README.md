@@ -43,6 +43,160 @@ Or add it directly to your `.csproj` file:
 <PackageReference Include="ArroSimpleForm" Version="13.0.0" />
 ```
 
+## 🆕 Version 17.0.4 Updates
+
+In version **17.0.4**, Arro Simple Form introduces new APIs designed for use with headless applications:
+
+- **Form Fetch API**: Retrieve form data dynamically, including all defined fields.
+- **Form Submission API**: Submit form data programmatically, enabling seamless integration in headless environments.
+
+These APIs enhance the flexibility of Arro Simple Form, making it easier to integrate with modern headless CMS architectures.
+
+## 📝 API Key Configuration
+
+To access the APIs, configure the `FormsApiKey` in your `appsettings.json` file:
+
+```json
+"Arroact": {
+    "FormsApiKey": "<yourkey>"
+}
+```
+
+### Usage
+Pass the API key as a header when consuming:
+
+```header
+X-Api-Key: <yourkey>
+```
+
+## 🆕 Version 17.0.4 Updates
+
+### Example: Retrieve Form Data by ID or Name
+
+#### By ID
+```bash
+GET /api/simpleform/form/{id}
+
+Headers:
+X-Api-Key: your-api-key
+
+Response:
+{
+    "id": 123,
+    "name": "Contact Us Form",
+    "fields": [
+        { "name": "email", "type": "text", "required": true },
+        { "name": "message", "type": "textarea", "required": true }
+    ]
+}
+```
+#### By Name
+```bash
+GET /api/simpleform/form/name/{name}
+
+Headers:
+X-Api-Key: your-api-key
+
+Response:
+{
+    "webFormFields": [
+        {
+            "id": 4,
+            "type": "header",
+            "subtype": "h1",
+            "name": null,
+            "label": "Header\n",
+            "description": null,
+            "placeholder": null,
+            "value": null,
+            "className": null,
+            "style": null,
+            "required": null,
+            "min": null,
+            "max": null,
+            "maxlength": null,
+            "rows": null,
+            "multiple": null,
+            "toggle": null,
+            "inline": null,
+            "other": null,
+            "action": null,
+            "actionRedirect": null,
+            "actionSendEmail": null,
+            "actionJavascript": null,
+            "values": []
+        },
+        {
+            "id": 5,
+            "type": "text",
+            "subtype": "text",
+            "name": "text-1781617850498-0",
+            "label": "Text Field\n",
+            "description": null,
+            "placeholder": null,
+            "value": null,
+            "className": "form-control",
+            "style": null,
+            "required": null,
+            "min": null,
+            "max": null,
+            "maxlength": null,
+            "rows": null,
+            "multiple": null,
+            "toggle": null,
+            "inline": null,
+            "other": null,
+            "action": null,
+            "actionRedirect": null,
+            "actionSendEmail": null,
+            "actionJavascript": null,
+            "values": []
+        }
+    ]
+}
+```
+
+```bash
+GET /api/simpleform/form/{id}
+
+Headers:
+X-Api-Key: your-api-key
+
+Response:
+{
+    "id": 123,
+    "name": "Contact Us Form",
+    "fields": [
+        { "name": "email", "type": "text", "required": true },
+        { "name": "message", "type": "textarea", "required": true }
+    ]
+}
+```
+
+#### Submit Form with Files
+```javascript
+// Request
+const formData = new FormData();
+formData.append('formId', 1);
+formData.append('email', 'user@example.com');
+formData.append('name', 'John Doe');
+formData.append('files', fileInput.files[0]);
+
+fetch('/api/simpleform/submit', {
+  method: 'POST',
+  body: formData
+})
+
+// Response (Success)
+{
+  "success": true,
+  "submissionId": 12345,
+  "message": "Form submitted successfully",
+  "redirectUrl": "https://example.com/thank-you"
+}
+```
+
+
 ## ⚙️ Configuration
 
 ### SMTP Settings
