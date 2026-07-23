@@ -1,6 +1,8 @@
 # Arro Simple Form
 
 [![NuGet](https://img.shields.io/nuget/v/ArroSimpleForm.svg)](https://www.nuget.org/packages/ArroSimpleForm/)
+[![NuGet downloads](https://img.shields.io/nuget/dt/ArroSimpleForm.svg)](https://www.nuget.org/packages/ArroSimpleForm/)
+![Umbraco 13+](https://img.shields.io/badge/Umbraco-13%2B-3544B1.svg)
 [![License](https://img.shields.io/badge/license-Commercial-blue.svg)](https://www.arroact.com)
 
 **Arro Simple Form** is a powerful form builder for Umbraco CMS that enables users to create dynamic, customizable forms without writing any code. Seamlessly integrate forms into your Umbraco websites with automated data collection and email notifications.
@@ -15,12 +17,12 @@
 - **Redirect Actions** - Configure post-submission redirects
 - **Tracking & Analytics** - Capture submission metadata (IP address, browser, page URL)
 - **SMTP Integration** - Full integration with Umbraco's SMTP configuration
-- **Umbraco 17 Compatible** - Built for .NET 10.0 and Umbraco CMS 17
+- **Umbraco 18 Compatible** - Built for .NET 10.0 and Umbraco CMS 18
 
 ## 📋 Requirements
 
-- **Umbraco CMS**: Version 13.0.0 or higher
-- **.NET**: Version 8.0 or higher
+- **Umbraco CMS**: Version 18.0.0
+- **.NET**: Version 10.0
 - **Database**: SQL Server
 
 ## 📦 Installation
@@ -28,29 +30,28 @@
 Install the package via NuGet Package Manager:
 
 ```bash
-dotnet add package ArroSimpleForm
+dotnet add package ArroSimpleForm --version 18.0.0
 ```
 
 Or via the NuGet Package Manager Console:
 
 ```powershell
-Install-Package ArroSimpleForm
+Install-Package ArroSimpleForm -Version 18.0.0
 ```
 
 Or add it directly to your `.csproj` file:
 
 ```xml
-<PackageReference Include="ArroSimpleForm" Version="13.0.0" />
+<PackageReference Include="ArroSimpleForm" Version="18.0.0" />
 ```
 
-## 🆕 Version 17.0.4 Updates
+## 🆕 Version 18.0.0 Updates
 
-In version **17.0.4**, Arro Simple Form introduces new APIs designed for use with headless applications:
+Version **18.0.0** supports **Umbraco CMS 18** and .NET 10. The public Simple Form API is available through Umbraco's OpenAPI UI, making it easier to discover and test API endpoints.
 
 - **Form Fetch API**: Retrieve form data dynamically, including all defined fields.
 - **Form Submission API**: Submit form data programmatically, enabling seamless integration in headless environments.
-
-These APIs enhance the flexibility of Arro Simple Form, making it easier to integrate with modern headless CMS architectures.
+- **Swagger UI API-Key Support**: Authorize requests in `/umbraco/openapi/` without removing endpoint authorization.
 
 ## 📝 API Key Configuration
 
@@ -66,10 +67,14 @@ To access the APIs, configure the `FormsApiKey` in your `appsettings.json` file:
 Pass the API key as a header when consuming:
 
 ```header
-X-Api-Key: <yourkey>
+ArroFormsApiKey: <yourkey>
 ```
 
-## 🆕 Version 17.0.4 Updates
+### Swagger UI
+
+Open `/umbraco/openapi/`, select **SimpleForm Public API**, and click **Authorize**. Enter the value configured in `Arroact:FormsApiKey`; Swagger UI sends it as the `ArroFormsApiKey` header for each request.
+
+## 📖 Public API Reference
 
 ### Example: Retrieve Form Data by ID or Name
 
@@ -78,7 +83,7 @@ X-Api-Key: <yourkey>
 GET /api/simpleform/form/{id}
 
 Headers:
-X-Api-Key: your-api-key
+ArroFormsApiKey: your-api-key
 
 Response:
 {
@@ -95,7 +100,7 @@ Response:
 GET /api/simpleform/form/name/{name}
 
 Headers:
-X-Api-Key: your-api-key
+ArroFormsApiKey: your-api-key
 
 Response:
 {
@@ -160,7 +165,7 @@ Response:
 GET /api/simpleform/form/{id}
 
 Headers:
-X-Api-Key: your-api-key
+ArroFormsApiKey: your-api-key
 
 Response:
 {
@@ -184,6 +189,9 @@ formData.append('files', fileInput.files[0]);
 
 fetch('/api/simpleform/submit', {
   method: 'POST',
+  headers: {
+    ArroFormsApiKey: 'your-api-key'
+  },
   body: formData
 })
 
